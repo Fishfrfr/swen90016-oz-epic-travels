@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your App{% endblock %}</title>
+    {% block extra_css %}{% endblock %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        dark: '#1F2937',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 min-h-screen flex flex-col">
+{% if messages %}
+    <!-- For debugging -->
+    <p>Debug: There are {{ messages|length }} messages</p>
+    {% for message in messages %}
+        <p>Debug: Message ({{ message.tags }}): {{ message }}</p>
+        <!-- Rest of your message display code -->
+    {% endfor %}
+{% else %}
+    <p>Debug: No messages</p>
+{% endif %}
+<div id="alert-container" class="fixed top-4 right-4 z-50">
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div id="toast-success"
+                     class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                     role="alert">
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"></path>
+                        </svg>
+                        <span class="sr-only">Success icon</span>
+                    </div>
+                    <div class="ms-3 text-sm font-normal">{{ message }}</div>
+                    <button type="button"
+                            class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                            data-toast="true"
+                            data-dismiss-target="#toast-success" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                        </svg>
+                    </button>
+                </div>
+            {% elif message.tags == 'error' %}
+                <div id="toast-danger"
+                     class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                     role="alert">
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"></path>
+                        </svg>
+                        <span class="sr-only">Error icon</span>
+                    </div>
+                    <div class="ms-3 text-sm font-normal">{{ message }}</div>
+                    <button type="button"
+                            class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                            data-toast="true"
+                            data-dismiss-target="#toast-danger" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                        </svg>
+                    </button>
+                </div>
+            {% else %}
+                <div id="toast-warning"
+                     class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+                     role="alert">
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-500 bg-orange-100 rounded-lg dark:bg-orange-700 dark:text-orange-200">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                             viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM10 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-4a1 1 0 0 1-2 0V6a1 1 0 0 1 2 0v5Z"></path>
+                        </svg>
+                        <span class="sr-only">Warning icon</span>
+                    </div>
+                    <div class="ms-3 text-sm font-normal">{{ message }}</div>
+                    <button type="button"
+                            class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                            data-toast="true"
+                            data-dismiss-target="#toast-warning" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                        </svg>
+                    </button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+
+
+{% block header %}{% endblock %}
+
+<main class="flex-grow">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="bg-dark py-8">
+    <div id="aboutDialog" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-lg max-w-2xl w-full mx-4">
+            <h2 class="text-2xl font-bold mb-4">About OZ Epic</h2>
+            <p class="mb-4">OZ Epic is your ultimate travel companion, dedicated to making your journeys unforgettable.
+                With years of experience in the travel industry, we've crafted a service that combines cutting-edge
+                technology with personalized care.</p>
+            <p class="mb-4">Our team of passionate travelers and industry experts work tirelessly to ensure that every
+                aspect of your trip is meticulously planned and executed. From finding the best flight deals to curating
+                unique experiences at your destination, we're with you every step of the way.</p>
+            <p class="mb-4">At OZ Epic, we believe that travel has the power to transform lives, broaden perspectives,
+                and create lasting memories. Our mission is to make these enriching experiences accessible to everyone,
+                regardless of their budget or travel expertise.</p>
+            <button onclick="closeDialog('aboutDialog')"
+                    class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-opacity-90 transition-all duration-300">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <div id="contactDialog" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-lg max-w-2xl w-full mx-4">
+            <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+            <p class="mb-4">We're here to assist you with any questions or concerns you may have. Feel free to reach out
+                to us using the contact information below:</p>
+            <ul class="mb-6">
+                <li class="mb-2"><strong>Email:</strong> info@ozepic.com</li>
+                <li class="mb-2"><strong>Phone:</strong> +1 (555) 123-4567</li>
+                <li class="mb-2"><strong>Address:</strong> 123 Travel Street, Adventure City, OZ 12345</li>
+            </ul>
+            <h3 class="text-xl font-semibold mb-3">Send us a message</h3>
+            <form>
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <input type="text" id="name" name="name"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="email" name="email"
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <textarea id="message" name="message" rows="4"
+                              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+                </div>
+                <div class="flex items-center justify-evenly gap-1.5">
+                    <button onclick="closeDialog('contactDialog')"
+                            class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-300 transition-all duration-300 w-full">
+                        Close
+                    </button>
+                    <button type="submit"
+                            class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-opacity-90 transition-all duration-300 w-full">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 text-white">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-3">OZ Epic</h3>
+                <p class="text-sm text-gray-400 mb-3">Your ultimate travel partner for unforgettable adventures.</p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'dashboard' %}" class="bg-primary text-white px-4 py-1.5 rounded-sm text-sm font-medium hover:bg-opacity-90 transition-all duration-300">My Dashboard</a>
+                {% else %}
+                <div class="md:flex space-x-3">
+                    <a href="{% url 'login' %}"
+                       class="bg-primary text-white px-4 py-1.5 rounded-sm text-sm font-medium hover:bg-opacity-30 transition-all duration-300"
+                       id="loginBtn">Login</a>
+                    <a href="{% url 'register' %}"
+                       class="bg-gray-200 text-gray-800 px-4 py-1.5 rounded-sm text-sm font-medium hover:bg-opacity-90 transition-all duration-300"
+                       id="signupBtn">Sign Up</a>
+                </div>
+                {% endif %}
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+                <div class="flex justify-center wrap gap-1 items-center">
+                    {% block footer %}
+                    {% endblock %}
+                    <ul class="space-y-2 text-sm flex-1">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="/#services" class="text-gray-400 hover:text-white transition-colors duration-300">Services</a></li>
+                    </ul>
+                    <ul class="space-y-2 text-sm flex-1">
+                        <li><a href="#aboutDialog" onclick="openDialog('aboutDialog')"
+                               class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="#contactDialog" onclick="openDialog('contactDialog')"
+                               class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Connect With Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-sm text-gray-400">
+            <p>&copy; 2024 OZ Epic Explorations. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dismissButtons = document.querySelectorAll('button[data-toast="true"]');
+        dismissButtons.forEach((button) => {
+            button.addEventListener('click', function(event) {
+                const alert = this.closest('[role="alert"]');
+                if (alert) {
+                    alert.remove();
+                }
+            });
+        });
+
+        // Auto-dismiss alerts after 8 seconds
+        const alerts = document.querySelectorAll('[role="alert"]');
+        alerts.forEach(function(alert) {
+            setTimeout(function() {
+                alert.remove();
+            }, 8000);
+        });
+    });
+</script>
+<script>
+    function openDialog(dialogId) {
+        document.getElementById(dialogId).classList.remove('hidden');
+    }
+
+    function closeDialog(dialogId) {
+        document.getElementById(dialogId).classList.add('hidden');
+    }
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

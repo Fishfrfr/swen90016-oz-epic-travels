@@ -1,0 +1,136 @@
+{% extends "OzTraveller/base.html" %}
+{% load static %}
+{% block title %}OZ Epic - Your Ultimate Travel Partner{% endblock %}
+
+{% block header %}
+    <header class="fixed w-full top-0 z-50 transition-all duration-300" id="header">
+        <nav class="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-white transition-colors duration-300" id="logo">OZ Epic</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#services"
+                   class="text-sm font-medium text-white hover:text-primary transition-colors duration-300 nav-link">Services</a>
+                <a href="#"
+                   class="text-sm font-medium text-white hover:text-primary transition-colors duration-300 nav-link"
+                   onclick="openDialog('aboutDialog')">About</a>
+                <a href="#"
+                   class="text-sm font-medium text-white hover:text-primary transition-colors duration-300 nav-link"
+                   onclick="openDialog('contactDialog')">Contact</a>
+            </div>
+            <div class="md:flex space-x-3">
+                <a href="{% url 'login' %}"
+                   class="bg-white bg-opacity-40 text-white px-4 py-1.5 rounded-md text-sm font-medium hover:bg-opacity-30 transition-all duration-300"
+                   id="loginBtn">Login</a>
+                <a href="{% url 'register' %}"
+                   class="bg-white text-primary px-4 py-1.5 rounded-md text-sm font-medium hover:bg-opacity-90 transition-all duration-300"
+                   id="signupBtn">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <section class="hero min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed text-white relative"
+             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://t3.ftcdn.net/jpg/03/00/75/64/240_F_300756454_jX9UODdWSoEWksF3WfY9B6LMd4yQse6R.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/40 to-secondary/40"></div>
+        <div class="container mx-auto px-4 sm:px-6 text-center z-10">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">Discover the World <br>with OZ
+                Epic</h1>
+            <p class="text-lg sm:text-xl mb-8 max-w-xl mx-auto">Your trusted partner for seamless and enjoyable travel
+                planning worldwide</p>
+            <a href="#services"
+               class="bg-white text-primary px-6 py-2 rounded-md text-sm font-medium hover:bg-opacity-90 transition-all duration-300 inline-block">Explore
+                Services</a>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-bold text-center text-dark mb-12">Our Services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
+                    <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-plane text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-dark mb-2">Flight Bookings</h3>
+                    <p class="text-sm text-gray-600">Access numerous airlines with competitive rates</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
+                    <div class="bg-secondary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hotel text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-dark mb-2">Hotel Reservations</h3>
+                    <p class="text-sm text-gray-600">Find accommodations to suit your needs and budget</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
+                    <div class="bg-accent text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-suitcase text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-dark mb-2">Vacation Packages</h3>
+                    <p class="text-sm text-gray-600">Curated packages including flights, accommodations, and
+                        activities</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
+                    <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-car text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-dark mb-2">Car Rentals</h3>
+                    <p class="text-sm text-gray-600">Wide range of options with flexible booking</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
+                    <div class="bg-secondary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-dark mb-2">Travel Insurance</h3>
+                    <p class="text-sm text-gray-600">Comprehensive plans covering various travel needs</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm transition-all duration-300 hover:shadow-md">
+                    <div class="bg-accent text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-dark mb-2">24/7 Customer Support</h3>
+                    <p class="text-sm text-gray-600">Round-the-clock assistance for all your travel needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            const logo = document.getElementById('logo');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+
+            if (window.scrollY > 0) {
+                header.classList.add('bg-white', 'shadow-md');
+                header.classList.remove('bg-transparent');
+                logo.classList.remove('text-white');
+                logo.classList.add('text-primary');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-700');
+                });
+                loginBtn.classList.remove('bg-white', 'bg-opacity-40', 'text-white');
+                loginBtn.classList.add('bg-primary', 'text-white');
+                signupBtn.classList.remove('bg-white', 'text-primary');
+                signupBtn.classList.add('bg-gray-200', 'text-gray-800');
+            } else {
+                header.classList.remove('bg-white', 'shadow-md');
+                header.classList.add('bg-transparent');
+                logo.classList.add('text-white');
+                logo.classList.remove('text-primary');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-700');
+                });
+                loginBtn.classList.add('bg-white', 'bg-opacity-40', 'text-white');
+                loginBtn.classList.remove('bg-primary', 'text-white');
+                signupBtn.classList.add('bg-white', 'text-primary');
+                signupBtn.classList.remove('bg-gray-200', 'text-gray-800');
+            }
+        });
+    </script>
+{% endblock %}

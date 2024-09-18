@@ -1,0 +1,66 @@
+{% extends "OzTraveller/base.html" %}
+{% load crispy_forms_filters %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <div class="md:flex">
+                    <!-- Left column: Branding and welcome message -->
+                    <div class="md:w-1/2 bg-blue-600 text-white p-8">
+                        <h2 class="text-3xl font-bold mb-4">Welcome Back to OZ Epic</h2>
+                        <p class="mb-4">Log in to access your account and continue your epic adventures.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Access your travel itineraries
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Manage your bookings
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Connect with fellow travelers
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Right column: Login form -->
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-2xl font-semibold mb-6">Login to Your Account</h3>
+                        <form method="post" class="space-y-4">
+                            {% csrf_token %}
+                            {% if form.non_field_errors %}
+                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                    {{ form.non_field_errors }}
+                                </div>
+                            {% endif %}
+                            {% for field in form %}
+                                <div>
+                                    {{ field|as_crispy_field }}
+                                </div>
+                            {% endfor %}
+                            <div class="flex flex-col items-stretch justify-center mt-6 gap-2">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                                    Sign In
+                                </button>
+                                <p class="text-center text-gray-500 text-sm">
+                                    Don't have an account? <a href="{% url 'register' %}" class="text-blue-500 hover:text-blue-800 font-bold">Sign up here</a>
+                                </p>
+                            </div>
+                        </form>
+                        <div class="mt-6 text-center inline-block align-baseline font-bold text-sm text-gray-500 w-full">
+                            Please Contact System Admin For Password Reset
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
