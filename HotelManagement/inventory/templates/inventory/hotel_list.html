@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; }
+        .filter-form { margin-bottom: 20px; }
+        .hotel-card { margin-top: 10px; border: 1px solid #ddd; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>List of Hotels</h1>
+
+        <form method="get" class="filter-form">
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" id="search-name" name="name" placeholder="Search by Hotel Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="filter-city" name="city" placeholder="Filter by City">
+                </div>
+                <div class="col">
+                    <select class="form-control" id="filter-star-rating" name="star_rating">
+                        <option value="">Filter by Star Rating</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" id="filter-min-price" name="min_price" placeholder="Min Price">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" id="filter-max-price" name="max_price" placeholder="Max Price">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary" id="search-filter-button">Filter</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="hotel-list">
+            {% for hotel in hotels %}
+            <div class="hotel-card" id="hotel-{{ hotel.id }}">
+                <h2>{{ hotel.name }}</h2>
+                <p>{{ hotel.address }}</p>
+                <p>Star Rating: {{ hotel.star_rating }}</p>
+                <p>Contact: {{ hotel.contact_name }} ({{ hotel.contact_email }}, {{ hotel.contact_phone }})</p>
+                <p><a href="{{ hotel.website_url }}">Website</a></p>
+                <p><strong>Room Types:</strong></p>
+                <ul>
+                    {% for room_type in hotel.room_types.all %}
+                    <li>{{ room_type.type_name }} - ${{ room_type.price }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'book_hotel' hotel.id %}" class="btn btn-success" id="book-button-{{ hotel.id }}">Book</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+hotel_id,hotel_name,address,star_rating,contact_name,contact_email,contact_phone,business_registration_number,website_url,room_type_id,room_type_name,price,availability,meal_plan
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT001,Standard Room,100.0,20,Continental
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT002,Deluxe Room,150.0,10,Breakfast
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT003,Suite,200.0,5,Full Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT004,Family Room,180.0,8,Half Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT004,Family Room,180.0,8,Half Board
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT001,Standard Room,100.0,20,Continental
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT001,Standard Room,100.0,20,Continental
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT003,Suite,200.0,5,Full Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT004,Family Room,180.0,8,Half Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT003,Suite,200.0,5,Full Board
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT002,Deluxe Room,150.0,10,Breakfast
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT004,Family Room,180.0,8,Half Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT004,Family Room,180.0,8,Half Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT003,Suite,200.0,5,Full Board
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT001,Standard Room,100.0,20,Continental
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT003,Suite,200.0,5,Full Board
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT001,Standard Room,100.0,20,Continental
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT004,Family Room,180.0,8,Half Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT003,Suite,200.0,5,Full Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT003,Suite,200.0,5,Full Board
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT004,Family Room,180.0,8,Half Board
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT002,Deluxe Room,150.0,10,Breakfast
+H001,Sunrise Hotel,"123 Beach Road, City",4,John Doe,johndoe@sunrisehotel.com,1234567890,BRN123456,https://www.sunrisehotel.com,RT001,Standard Room,100.0,20,Continental
+H002,Mountain View,"456 Hill Street, Town",5,Jane Smith,janesmith@mountainview.com,987654321,BRN654321,https://www.mountainview.com,RT004,Family Room,180.0,8,Half Board
+H003,Ocean Breeze,"789 Sea Avenue, Coastal City",3,Emily Clark,emily@oceanbreeze.com,1122334455,BRN987654,https://www.oceanbreeze.com,RT005,Ocean View,120.0,15,All Inclusive
+H004,City Lights,"321 Urban Street, Metropolis",4,Chris Johnson,chris@citylights.com,5566778899,BRN123789,https://www.citylights.com,RT006,City Suite,160.0,12,Breakfast Included
+H005,Forest Retreat,"654 Woodland Road, Forest Town",5,Alice Green,alice@forestretreat.com,9988776655,BRN456123,https://www.forestretreat.com,RT007,Forest Cabin,220.0,7,Half Board

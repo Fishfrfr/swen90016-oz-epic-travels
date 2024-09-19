@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Hotel</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ hotel.name }}</h1>
+        <p>{{ hotel.address }}</p>
+        <p>Star Rating: {{ hotel.star_rating }}</p>
+
+        <h2>Available Rooms</h2>
+        <form method="post" action="{% url 'hold_booking' hotel.id %}">
+            {% csrf_token %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Room Type</th>
+                        <th>Price</th>
+                        <th>Availability</th>
+                        <th>Select Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for room_type in hotel.room_types.all %}
+                    <tr>
+                        <td>{{ room_type.type_name }}</td>
+                        <td>${{ room_type.price }}</td>
+                        <td>{{ room_type.availability }}</td>
+                        <td>
+                            <input type="number" name="room_quantity_{{ room_type.id }}" min="0" max="{{ room_type.availability }}" class="form-control">
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Hold Booking</button>
+        </form>
+    </div>
+</body>
+</html>
